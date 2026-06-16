@@ -7,9 +7,9 @@ library(e1071)
 dati <- read.csv("winequality-red.csv", sep =";") #in questo file i dati sono separati da ;
 
 # Definiamo le variabili di interesse per l'analisi
-var_categ_discreta <- dati$quality  # Qualità del vino (discreta, punteggio)
-var_continua_x <- dati$alcohol      # Gradazione alcolica (continua, per l'analisi bivariata)
-var_continua_y <- dati$pH           # Livello di pH (continua, per l'analisi bivariata)
+var_categ_discreta <- dati$quality  # Qualità del vino (punteggio, per l'analisi delle frequenze)
+var_continua_x <- dati$alcohol      # Gradazione alcolica (per l'analisi univariata e bivariata con il pH)
+var_continua_y <- dati$pH           # Livello di pH (per l'analisi bivariata con l'alcol)
 
 # 1. TABELLA DELLE FREQUENZE
 cat("\n--- 1. TABELLA DELLE FREQUENZE ---\n")
