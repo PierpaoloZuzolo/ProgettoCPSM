@@ -42,7 +42,7 @@ print(tabella_frequenze)
 barplot(freq_assolute, main="Grafico a Barre (Cilindri)", xlab="Cilindri", ylab="Frequenza", col="steelblue")
 
 # Grafico a torta
-pie(freq_assolute, main="Grafico a Torta (Cilindri)", col=c("lightblue", "mistyrose", "lightgreen"))
+pie(freq_assolute, main="Grafico a Torta (Cilindri)")
 
 # Istogramma (per dati continui)
 hist(var_continua_x, main="Istogramma (Miglia per gallone)", xlab="Miglia per gallone (mpg)", col="coral")
