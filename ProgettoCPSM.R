@@ -8,8 +8,8 @@ dati <- read.csv("auto-mpg.csv")
 
 # Definiamo le variabili di interesse per l'analisi
 var_categ_discreta <- dati$cylinders  # Numero di cilindri (adatta per le frequenze)
-var_continua_x <- dati$weight      # Peso dell'auto (per l'analisi bivariata con mpg)
-var_continua_y <- dati$mpg       # Miglia per gallone (adatta per analisi univariata)
+var_continua_x <- dati$weight      # Peso dell'auto (per l'analisi univariata e bivariata con mpg)
+var_continua_y <- dati$mpg       # Miglia per gallone (adatta per analisi bivariata con il peso)
 
 # 1. TABELLA DELLE FREQUENZE
 cat("\n--- 1. TABELLA DELLE FREQUENZE ---\n")
