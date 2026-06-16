@@ -1,16 +1,15 @@
 # Caricamento libreria per indici di forma (asimmetria e curtosi)
-# Se non è installata, eseguire prima: install.packages("e1071")
+#install.packages("e1071")
 library(e1071)
 
 # 0. CARICAMENTO DATI
-# Oppure: dati <- read.csv("mio_dataset.csv")
-data(mtcars)
-dati <- mtcars
+#https://www.kaggle.com/datasets/uciml/autompg-dataset
+dati <- read.csv("auto-mpg.csv")
 
 # Definiamo le variabili di interesse per l'analisi
-var_categ_discreta <- dati$cyl  # Numero di cilindri (adatta per le frequenze)
-var_continua_x <- dati$mpg      # Miglia per gallone (adatta per analisi univariata)
-var_continua_y <- dati$wt       # Peso dell'auto (per l'analisi bivariata con mpg)
+var_categ_discreta <- dati$cylinders  # Numero di cilindri (adatta per le frequenze)
+var_continua_x <- dati$weight      # Peso dell'auto (per l'analisi bivariata con mpg)
+var_continua_y <- dati$mpg       # Miglia per gallone (adatta per analisi univariata)
 
 # 1. TABELLA DELLE FREQUENZE
 cat("\n--- 1. TABELLA DELLE FREQUENZE ---\n")
@@ -45,10 +44,10 @@ barplot(freq_assolute, main="Grafico a Barre (Cilindri)", xlab="Cilindri", ylab=
 pie(freq_assolute, main="Grafico a Torta (Cilindri)")
 
 # Istogramma (per dati continui)
-hist(var_continua_x, main="Istogramma (Miglia per gallone)", xlab="Miglia per gallone (mpg)", col="coral")
+hist(var_continua_x, main="Istogramma (Peso)", xlab="Peso", col="coral")
 
 # Box Plot
-boxplot(var_continua_x, main="Box Plot (Miglia per gallone)", ylab="mpg", col="yellow", horizontal=TRUE)
+boxplot(var_continua_x, main="Box Plot (Peso)", xlab="Peso", col="yellow", horizontal=TRUE)
 
 # 3. INDICI DI POSIZIONE E VARIABILITÀ
 cat("\n--- 3. INDICI DI POSIZIONE E VARIABILITÀ ---\n")
@@ -101,13 +100,13 @@ cat("\n--- 5. ANALISI BIVARIATA ---\n")
 
 # Coefficiente di correlazione campionario
 coeff_correlazione <- cor(var_continua_x, var_continua_y, use = "complete.obs") #parametro use per evitare i valori NA
-cat("Coefficiente di correlazione campionario (mpg vs peso):", coeff_correlazione, "\n")
+cat("Coefficiente di correlazione campionario (peso vs miglia per gallone):", coeff_correlazione, "\n")
 
 # Diagramma a dispersione (Scatterplot)
 plot(var_continua_x, var_continua_y, 
      main="Diagramma a Dispersione (Scatterplot)", 
-     xlab="Miglia per gallone (mpg)", 
-     ylab="Peso dell'auto (wt)", 
+     xlab="Peso", 
+     ylab="Miglia per Gallone", 
      pch=19, col="darkblue")
 
 # Aggiunta di una linea di tendenza
